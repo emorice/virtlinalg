@@ -1,0 +1,24 @@
+[project]
+name = "virtlinalg"
+version = "0.1.0"
+description = "Virtual Linear Algebra"
+authors = [
+    {name = "Étienne Morice",email = "pro.emorice@mail.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+numpy = "^2.3.0"
+pytest = "^8.4.0"
+pylint = "^3.3.7"
+mypy = "^1.16.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
