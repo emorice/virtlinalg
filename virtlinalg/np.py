@@ -4,9 +4,9 @@ NumPy backend for VLA
 
 import numpy.typing as npt
 
-from . import Matrices
+from . import Matrices, Maps
 
-class NumpyMatrices(Matrices):
+class NumpyMatrices(Matrices, Maps['NumpyMatrices']):
     """
     Adapter for NumPy types
     """

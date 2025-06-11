@@ -34,3 +34,17 @@ def test_transpose() -> None:
             vnp.unwrap(vla_results),
             np.array([[0., 2.], [1., 3.]])
             )
+
+def test_apply() -> None:
+    """
+    Can use Matrices as Maps
+    """
+    matrices = vnp.wrap(np.array([[0, 1], [2, 3]]))
+    vectors = vnp.wrap(np.array([[4, 5]]).T)
+
+    result = matrices @ vectors
+
+    assert np.array_equal(
+            vnp.unwrap(result),
+            np.array([[5, 23]]).T
+            )
