@@ -21,7 +21,7 @@ class Matrices:
         """
         raise NotImplementedError
 
-class Maps[M:Matrices]:
+class Maps[M: Matrices]:
     """
     Minimal Linear map interface
     """
