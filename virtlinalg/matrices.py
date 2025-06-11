@@ -21,6 +21,12 @@ class Matrices:
         """
         raise NotImplementedError
 
+    def __add__(self, other: Self) -> Self:
+        """
+        Matrix addition
+        """
+        raise NotImplementedError
+
 class Maps[M: Matrices]:
     """
     Minimal Linear map interface

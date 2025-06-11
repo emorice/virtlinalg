@@ -20,6 +20,9 @@ class NumpyMatrices(Matrices, Maps['NumpyMatrices']):
     def __matmul__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
         return NumpyMatrices(self._np_matrices @ other._np_matrices)
 
+    def __add__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
+        return NumpyMatrices(self._np_matrices + other._np_matrices)
+
     def unwrap(self) -> npt.NDArray:
         """
         Return wrapped array
