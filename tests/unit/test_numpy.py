@@ -4,8 +4,7 @@ NumPy backend
 
 import numpy as np
 
-import virtlinalg as vla
-import virtlinalg.np
+import virtlinalg.np as vnp
 
 def test_wrap_unwrap() -> None:
     """
@@ -13,11 +12,11 @@ def test_wrap_unwrap() -> None:
     """
     np_matrices = np.array([[0., 1.], [2., 3.]])
 
-    vla_matrices = vla.np.wrap(np_matrices)
+    vla_matrices = vnp.wrap(np_matrices)
 
-    assert isinstance(vla_matrices, vla.np.NumpyMatrices)
+    assert isinstance(vla_matrices, vnp.NumpyMatrices)
 
-    np_matrices_back = vla.np.unwrap(vla_matrices)
+    np_matrices_back = vnp.unwrap(vla_matrices)
 
     assert np_matrices_back is np_matrices
 
