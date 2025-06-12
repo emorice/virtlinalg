@@ -2,6 +2,7 @@
 NumPy backend for VLA
 """
 
+import numpy as np
 import numpy.typing as npt
 
 from . import Matrices, Maps
@@ -23,6 +24,15 @@ class NumpyMatrices(Matrices, Maps['NumpyMatrices']):
     def __add__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
         return NumpyMatrices(self._np_matrices + other._np_matrices)
 
+    def inv(self) -> 'NumpyMatrices':
+        return NumpyMatrices(np.linalg.inv(self._np_matrices))
+
+    def right_eye(self) -> 'NumpyMatrices':
+        return NumpyMatrices(np.eye(self._np_matrices.shape[-1]))
+
+    def __neg__(self) -> 'NumpyMatrices':
+        return NumpyMatrices(-self._np_matrices)
+
     def unwrap(self) -> npt.NDArray:
         """
         Return wrapped array
@@ -34,7 +44,6 @@ def wrap(np_matrices: npt.NDArray) -> NumpyMatrices:
     Wrap NumPy array into VLA matrices
     """
     return NumpyMatrices(np_matrices)
-
 
 def unwrap(vla_matrices: NumpyMatrices) -> npt.NDArray:
     """

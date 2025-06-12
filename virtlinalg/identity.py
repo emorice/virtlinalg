@@ -14,6 +14,9 @@ class Identity[M: Matrices](Maps[M]):
     def __matmul__(self, other: M) -> M:
         return other
 
+    def inv(self):
+        return self
+
 def identity(rank: int) -> Identity:
     """
     Identity map of a given rank

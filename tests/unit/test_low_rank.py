@@ -42,3 +42,19 @@ def test_low_rank_update() -> None:
     # update: 10+2*11 = 32, *9 = 288, *[7, 8] = [2016, 2304]
     # total: [2027, 2321]
     assert np.array_equal(vnp.unwrap(result), np.array([[2027, 2321]]).T)
+
+def test_inverse_low_rank_update() -> None:
+    """
+    Can correctly compute a low-rank update inverse
+    """
+    base = vnp.wrap(np.array([[3, 4], [5, 6]]))
+    left = vnp.wrap(np.array([[7, 8]]).T)
+    center = vnp.wrap(np.array([[9]]))
+    right_t = vnp.wrap(np.array([[10, 11]]).T)
+
+    update = vla.low_rank_update(base, left, center, right_t.T)
+    dense_update = base + left @ center @ right_t.T
+
+    result = vla.inv(update) @ dense_update
+
+    assert np.allclose(vnp.unwrap(result), np.array([[1., 0.], [0., 1.]]))

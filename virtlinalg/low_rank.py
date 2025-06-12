@@ -15,6 +15,9 @@ class LowRankProduct[M: Matrices](Maps[M]):
     def __matmul__(self, other: M) -> M:
         return self._left @ (self._right @ other)
 
+    def inv(self):
+        raise ValueError('Low-rank matrices are not meant to be inverted')
+
 class LowRankUpdate[M: Matrices](Maps[M]):
     """
     Low Rank Update `base + left @ center @ right`
@@ -31,6 +34,23 @@ class LowRankUpdate[M: Matrices](Maps[M]):
             +
             self._left @ (self._center @ (self._right @ other))
             )
+
+    def inv(self) -> 'LowRankUpdate':
+        # This is were the woodbury comes in
+        inv_base = self._base.inv()
+        inv_base_left = inv_base @ self._left
+        capacitance = (
+                self._left.right_eye() +
+                # contract the large dim first
+                (self._right @ inv_base_left) @ self._center
+                )
+
+        return LowRankUpdate(
+                base=inv_base,
+                left=inv_base_left,
+                center=- self._center @ capacitance.inv(),
+                right=self._right @ inv_base
+                )
 
 def low_rank_product[M: Matrices](left: M, right: M) -> LowRankProduct[M]:
     """
