@@ -16,6 +16,9 @@ class _LowRankProduct[M: Matrices](Maps[M]):
     def __matmul__(self, other: M) -> M:
         return self._left @ (self._right @ other)
 
+    def __rmatmul__(self, other: M) -> M:
+        return (other @ self._left) @ self._right
+
     def inv(self):
         raise ValueError('Low-rank matrices are not meant to be inverted')
 
@@ -23,7 +26,7 @@ class _LowRankUpdate[M: Matrices](Maps[M]):
     """
     Low Rank Update `base + left @ center @ right`
     """
-    def __init__(self, base: M, left: M, center: M, right: M):
+    def __init__(self, base: M, left: M, right: M, center: Maps[M] | M):
         self._base = base
         self._left = left
         self._center = center
@@ -36,7 +39,14 @@ class _LowRankUpdate[M: Matrices](Maps[M]):
             self._left @ (self._center @ (self._right @ other))
             )
 
-    def inv(self) -> 'LowRankUpdate':
+    def __rmatmul__(self, other: M) -> M:
+        return (
+            other @ self._base
+            +
+            ((other @ self._left) @ self._center) @ self._right
+            )
+
+    def inv(self) -> '_LowRankUpdate':
         # This is were the woodbury comes in
         inv_base = self._base.inv()
         inv_base_left = inv_base @ self._left
@@ -46,22 +56,22 @@ class _LowRankUpdate[M: Matrices](Maps[M]):
                 (self._right @ inv_base_left) @ self._center
                 )
 
-        return LowRankUpdate(
+        return _LowRankUpdate(
                 base=inv_base,
                 left=inv_base_left,
-                center=- self._center @ capacitance.inv(),
+                center=- (self._center @ capacitance.inv()),
                 right=self._right @ inv_base
                 )
 
-def low_rank_product[M: Matrices](left: M, right: M) -> LowRankProduct[M]:
+def low_rank_product[M: Matrices](left: M, right: M) -> _LowRankProduct[M]:
     """
     Virtual `left @ right` product that does not actually perform the contraction
     """
     return _LowRankProduct(left, right)
 
 def low_rank_update[M: Matrices](base: M, left: M, right: M,
-                                 center: M | None = None
-                                 ) -> LowRankUpdate[M]:
+                                 center: Maps[M] | None = None
+                                 ) -> _LowRankUpdate[M]:
     """
     Virtual `base + left @ center @ right` product that does not explictly
     compute the matrix.

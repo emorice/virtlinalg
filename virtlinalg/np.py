@@ -19,10 +19,19 @@ class NumpyMatrices(Matrices, Maps['NumpyMatrices']):
         return NumpyMatrices(self._np_matrices.transpose(-1, -2))
 
     def __matmul__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
-        return NumpyMatrices(self._np_matrices @ other._np_matrices)
+        if isinstance(other, NumpyMatrices):
+            return NumpyMatrices(self._np_matrices @ other._np_matrices)
+        return NotImplemented
+
+    def __rmatmul__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
+        if isinstance(other, NumpyMatrices):
+            return NumpyMatrices(other._np_matrices @ self._np_matrices)
+        return NotImplemented
 
     def __add__(self, other: 'NumpyMatrices') -> 'NumpyMatrices':
-        return NumpyMatrices(self._np_matrices + other._np_matrices)
+        if isinstance(other, NumpyMatrices):
+            return NumpyMatrices(self._np_matrices + other._np_matrices)
+        return NotImplemented
 
     def inv(self) -> 'NumpyMatrices':
         return NumpyMatrices(np.linalg.inv(self._np_matrices))

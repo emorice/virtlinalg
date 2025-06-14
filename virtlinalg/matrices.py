@@ -69,6 +69,12 @@ class Maps[M: Matrices]:
         """
         raise NotImplementedError
 
+    def __rmatmul__(self, other: M) -> M:
+        """
+        Transposed linear map application
+        """
+        raise NotImplementedError
+
     def inv(self) -> Self:
         """
         Attempt inverse
