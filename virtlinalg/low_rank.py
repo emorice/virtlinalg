@@ -3,8 +3,9 @@ Low Rank matrices
 """
 
 from .matrices import Matrices, Maps
+from .identity import identity
 
-class LowRankProduct[M: Matrices](Maps[M]):
+class _LowRankProduct[M: Matrices](Maps[M]):
     """
     Low Rank product
     """
@@ -18,7 +19,7 @@ class LowRankProduct[M: Matrices](Maps[M]):
     def inv(self):
         raise ValueError('Low-rank matrices are not meant to be inverted')
 
-class LowRankUpdate[M: Matrices](Maps[M]):
+class _LowRankUpdate[M: Matrices](Maps[M]):
     """
     Low Rank Update `base + left @ center @ right`
     """
@@ -56,12 +57,14 @@ def low_rank_product[M: Matrices](left: M, right: M) -> LowRankProduct[M]:
     """
     Virtual `left @ right` product that does not actually perform the contraction
     """
-    return LowRankProduct(left, right)
+    return _LowRankProduct(left, right)
 
-def low_rank_update[M: Matrices](base: M, left: M, center: M, right: M
+def low_rank_update[M: Matrices](base: M, left: M, right: M,
+                                 center: M | None = None
                                  ) -> LowRankUpdate[M]:
     """
     Virtual `base + left @ center @ right` product that does not explictly
     compute the matrix.
     """
-    return LowRankUpdate(base, left, center, right)
+    center_map = identity(left.n_cols) if center is None else center
+    return _LowRankUpdate(base, left, right, center_map)

@@ -35,3 +35,6 @@ env_list = ["3.12", "3.13"]
 description = "Run test under {base_python}"
 dependency_groups = ["testing"]
 commands = [["pytest"]]
+
+[tool.uv]
+default-groups = "all"

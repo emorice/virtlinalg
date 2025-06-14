@@ -30,6 +30,14 @@ class NumpyMatrices(Matrices, Maps['NumpyMatrices']):
     def right_eye(self) -> 'NumpyMatrices':
         return NumpyMatrices(np.eye(self._np_matrices.shape[-1]))
 
+    @property
+    def n_rows(self) -> int:
+        return self._np_matrices.shape[-2]
+
+    @property
+    def n_cols(self) -> int:
+        return self._np_matrices.shape[-1]
+
     def __neg__(self) -> 'NumpyMatrices':
         return NumpyMatrices(-self._np_matrices)
 

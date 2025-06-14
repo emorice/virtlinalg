@@ -45,6 +45,20 @@ class Matrices:
         """
         raise NotImplementedError
 
+    @property
+    def n_rows(self) -> int:
+        """
+        Number of rows
+        """
+        raise NotImplementedError
+
+    @property
+    def n_cols(self) -> int:
+        """
+        Number of columns
+        """
+        raise NotImplementedError
+
 class Maps[M: Matrices]:
     """
     Minimal Linear map interface

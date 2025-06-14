@@ -48,3 +48,16 @@ def test_apply() -> None:
             vnp.unwrap(result),
             np.array([[5, 23]]).T
             )
+
+def test_shape() -> None:
+    """
+    Can access matrix shape
+    """
+
+    mat_2d = vnp.wrap(np.arange(6).reshape(2, 3))
+
+    assert (mat_2d.n_rows, mat_2d.n_cols) == (2, 3)
+
+    mat_4d = vnp.wrap(np.arange(120).reshape(4, 5, 2, 3))
+
+    assert (mat_4d.n_rows, mat_4d.n_cols) == (2, 3)
