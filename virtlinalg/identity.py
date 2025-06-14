@@ -2,9 +2,9 @@
 Identity application
 """
 
-from .matrices import Matrices, Maps
+from .matrices import Matrices, VirtualMaps
 
-class Identity[M: Matrices](Maps[M]):
+class Identity[M: Matrices](VirtualMaps[M]):
     """
     Identity map of a given rank
     """

@@ -59,9 +59,9 @@ class Matrices:
         """
         raise NotImplementedError
 
-class Maps[M: Matrices]:
+class VirtualMaps[M: Matrices]:
     """
-    Minimal Linear map interface
+    Virtual Linear Map interface
     """
     def __matmul__(self, other: M) -> M:
         """
@@ -80,3 +80,7 @@ class Maps[M: Matrices]:
         Attempt inverse
         """
         raise NotImplementedError
+
+# M is automatically a VirtMaps[M], but I don't think the type system can
+# express that, so we define the union explictly
+type Maps[M] = M | VirtualMaps[M]

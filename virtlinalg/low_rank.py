@@ -2,10 +2,10 @@
 Low Rank matrices
 """
 
-from .matrices import Matrices, Maps
+from .matrices import Matrices, Maps, VirtualMaps
 from .identity import identity
 
-class _LowRankProduct[M: Matrices](Maps[M]):
+class _LowRankProduct[M: Matrices](VirtualMaps[M]):
     """
     Low Rank product
     """
@@ -22,11 +22,11 @@ class _LowRankProduct[M: Matrices](Maps[M]):
     def inv(self):
         raise ValueError('Low-rank matrices are not meant to be inverted')
 
-class _LowRankUpdate[M: Matrices](Maps[M]):
+class _LowRankUpdate[M: Matrices](VirtualMaps[M]):
     """
     Low Rank Update `base + left @ center @ right`
     """
-    def __init__(self, base: M, left: M, right: M, center: Maps[M] | M):
+    def __init__(self, base: Maps[M], left: M, right: M, center: Maps[M]):
         self._base = base
         self._left = left
         self._center = center
@@ -69,8 +69,8 @@ def low_rank_product[M: Matrices](left: M, right: M) -> _LowRankProduct[M]:
     """
     return _LowRankProduct(left, right)
 
-def low_rank_update[M: Matrices](base: M, left: M, right: M,
-                                 center: Maps[M] | None = None
+def low_rank_update[M: Matrices](base: Maps[M] | M, left: M, right: M,
+                                 center: Maps[M] | M | None = None
                                  ) -> _LowRankUpdate[M]:
     """
     Virtual `base + left @ center @ right` product that does not explictly
