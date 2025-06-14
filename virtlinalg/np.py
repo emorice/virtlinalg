@@ -67,3 +67,16 @@ def unwrap(vla_matrices: NumpyMatrices) -> npt.NDArray:
     Unwrap NumPy array from VLA Matrices
     """
     return vla_matrices.unwrap()
+
+def wrap_vectors(np_vectors: npt.NDArray) -> NumpyMatrices:
+    """
+    Wrap batches of NumPy vectors into VLA matrices
+    """
+    return NumpyMatrices(np_vectors[..., None])
+
+
+def unwrap_vectors(vla_matrices: NumpyMatrices) -> npt.NDArray:
+    """
+    Unwrap batches of NumPy vectors from VLA Matrices
+    """
+    return np.squeeze(vla_matrices.unwrap(), axis=-1)
