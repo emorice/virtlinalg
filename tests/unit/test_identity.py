@@ -10,7 +10,7 @@ def test_identity() -> None:
     """
     Applying identity changes nothing
     """
-    vla_vectors = vnp.wrap(np.array([[1, 2, 3]]).T)
+    vla_vectors = vnp.wrap_vectors(np.array([1, 2, 3]))
     identity = vla.identity(3)
 
     vla_result = identity @ vla_vectors

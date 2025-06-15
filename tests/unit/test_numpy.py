@@ -69,13 +69,13 @@ def test_apply() -> None:
     Can use Matrices as Maps
     """
     matrices = vnp.wrap(np.array([[0, 1], [2, 3]]))
-    vectors = vnp.wrap(np.array([[4, 5]]).T)
+    vectors = vnp.wrap_vectors(np.array([4, 5]))
 
     result = matrices @ vectors
 
     assert np.array_equal(
-            vnp.unwrap(result),
-            np.array([[5, 23]]).T
+            vnp.unwrap_vectors(result),
+            np.array([5, 23])
             )
 
 def test_shape() -> None:
