@@ -7,8 +7,9 @@ authors = [
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.12" # Limited by type parameter lists¶
+requires-python = ">=3.12" # Limited by type parameter lists
 dependencies = [
+    "numpy>=2.1.2", # Downgraded to the latest version in pytorch index
 ]
 
 [build-system]
@@ -23,18 +24,30 @@ dev = [
     "tox>=4.26.0",
 ]
 testing = [
-    "numpy>=2.3.0",
     "pytest>=8.4.0",
+]
+# Additional opt group required to test torch features
+# If installing also instruct your installer to use index:
+#    https://download.pytorch.org/whl/cpu
+# when testing on a cpu platform.
+testing_torch = [
+    "torch>=2.7.1",
 ]
 
 [tool.tox]
 requires = ["tox>=4.19"]
-env_list = ["3.12", "3.13"]
+env_list = ["3.13", "3.12", "torch"]
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"
 dependency_groups = ["testing"]
+commands = [["pytest", "-k", "not torch"]]
+
+[tool.tox.env.torch]
+description = "Run Torch test under {base_python}"
+set_env = { PIP_EXTRA_INDEX_URL = "{env:PIP_INDEX_URL:https://download.pytorch.org/whl/cpu}" }
+dependency_groups = ["testing", "testing_torch"]
 commands = [["pytest"]]
 
 [tool.uv]
-default-groups = "all"
+default-groups = ["dev", "testing"]
