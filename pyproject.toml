@@ -44,10 +44,16 @@ dependency_groups = ["testing"]
 commands = [["pytest", "-k", "not torch"]]
 
 [tool.tox.env.torch]
-description = "Run Torch test under {base_python}"
+description = "Run Torch tests under {base_python}"
 set_env = { PIP_EXTRA_INDEX_URL = "{env:PIP_INDEX_URL:https://download.pytorch.org/whl/cpu}" }
 dependency_groups = ["testing", "testing_torch"]
 commands = [["pytest"]]
+
+[tool.tox.gh-actions]
+python = """
+	3.12: 3.12, torch
+	3.13: 3.13, torch
+	"""
 
 [tool.uv]
 default-groups = ["dev", "testing"]
