@@ -29,7 +29,8 @@ testing = [
 # Additional opt group required to test torch features
 # If installing also instruct your installer to use index:
 #    https://download.pytorch.org/whl/cpu
-# when testing on a cpu platform.
+# when testing on a cpu platform. This typically must be configured manually for
+# each tool (see tox and uv tables below)
 testing_torch = [
     "torch>=2.7.1",
 ]
@@ -56,4 +57,12 @@ python = """
 	"""
 
 [tool.uv]
-default-groups = ["dev", "testing"]
+default-groups = "all"
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
