@@ -65,7 +65,6 @@ def test_numpy(case: BackendCase):
     """
     case(vnp)
 
-
 def test_shape() -> None:
     """
     Can access matrix shape

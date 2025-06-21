@@ -7,15 +7,33 @@ from typing import Protocol
 import numpy as np
 import virtlinalg as vla
 
-class BackendCase(Protocol):
+class BackendCase(Protocol): # pylint: disable=too-few-public-methods
+    """
+    Type of generic backend case function
+    """
     def __call__[T, M: vla.Matrices](self, backend: vla.Backend[T, M]) -> None:
         ...
 
 backend_cases: list[BackendCase] = []
 
 def case(fun: BackendCase) -> BackendCase:
+    """
+    Decorator to add a generic backend case
+    """
     backend_cases.append(fun)
     return fun
+
+def _mat[T, M: vla.Matrices](backend: vla.Backend[T, M], array_like) -> M:
+    """
+    Helper to convert array like to numpy then backend then vla
+    """
+    return backend.wrap(backend.from_numpy(np.array(array_like)))
+
+def _unmat[T, M: vla.Matrices](backend: vla.Backend[T, M], matrices: M):
+    """
+    Reverse of _mat
+    """
+    return backend.to_numpy(backend.unwrap(matrices))
 
 @case
 def transpose[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
@@ -75,4 +93,77 @@ def apply[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
                 backend.unwrap_vectors(result)
                 ),
             np.array([5, 23])
+            )
+
+@case
+def add[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can add matrices with infix
+    """
+    matrices = _mat(backend, [[0, 1], [2, 3]])
+    other = _mat(backend, [[4, 5], [6, 7]])
+
+    result = matrices + other
+
+    assert np.array_equal(
+            _unmat(backend, result),
+            np.array([[4, 6], [8, 10]])
+            )
+
+@case
+def use_eye[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can create a conformable identity matrix
+    """
+    matrices = _mat(backend, [[0, 1], [2, 3]])
+
+    eye = matrices.right_eye()
+
+    result = matrices @ eye
+
+    assert np.array_equal(
+            _unmat(backend, matrices),
+            _unmat(backend, result)
+            )
+
+@case
+def shape[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can access the n_rows/n_cols shape
+    """
+    # 1, 2, 3
+    matrices = _mat(backend, [[
+        [0, 1, 2],
+        [3, 4, 5],
+        ]])
+
+    assert matrices.n_rows == 2
+    assert matrices.n_cols == 3
+
+@case
+def neg[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can take unary minus
+    """
+    matrices = _mat(backend, [[0, 1], [2, 3]])
+
+    result = - matrices
+
+    assert np.array_equal(
+            _unmat(backend, result),
+            np.array([[0, -1], [-2, -3]])
+            )
+
+@case
+def inv[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can take matrix inverse
+    """
+    matrices = _mat(backend, [[0, 1], [2, 3]])
+
+    result = matrices.inv()
+
+    assert np.allclose(
+            _unmat(backend, result),
+            np.array([[-3/2, 1/2], [1, 0]])
             )

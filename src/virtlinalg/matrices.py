@@ -42,6 +42,12 @@ class Matrices:
     def right_eye(self) -> Self:
         """
         Conformable identity matrix on right side
+
+        When applied to a stack of matrices, there is as of now no required
+        shape, as long as it broadcasts back correctly for that backend.
+
+        The dtype or equivalent is also undefined for now, as long as it can be
+        applied back for that backend.
         """
         raise NotImplementedError
 

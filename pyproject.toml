@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12" # Limited by type parameter lists
 dependencies = [
     "numpy>=2.1.2", # Downgraded to the latest version in pytorch index
+    "pylint>=3.3.7",
 ]
 
 [build-system]
