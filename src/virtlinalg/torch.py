@@ -40,12 +40,25 @@ class _TorchMatrices(Matrices):
                 ))
         return NotImplemented
 
+    def __mul__(self, other: '_TorchMatrices') -> '_TorchMatrices':
+        if isinstance(other, _TorchMatrices):
+            # Same as * operator but the function form is better documented
+            return _TorchMatrices(torch.mul(
+                self._torch_matrices, other._torch_matrices
+                ))
+        return NotImplemented
+
     def __add__(self, other: '_TorchMatrices') -> '_TorchMatrices':
         if isinstance(other, _TorchMatrices):
             return _TorchMatrices(torch.add(
                 self._torch_matrices, other._torch_matrices
                 ))
         return NotImplemented
+
+    def __rtruediv__(self, other: float) -> '_TorchMatrices':
+        return _TorchMatrices(torch.div(
+            other, self._torch_matrices
+            ))
 
     def __neg__(self) -> '_TorchMatrices':
         return _TorchMatrices(-self._torch_matrices)

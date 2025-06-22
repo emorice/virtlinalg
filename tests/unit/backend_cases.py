@@ -167,3 +167,31 @@ def inv[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
             _unmat(backend, result),
             np.array([[-3/2, 1/2], [1, 0]])
             )
+
+@case
+def mul[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can take element-wise multiplication (Hadamard product)
+    """
+    matrices =  _mat(backend, [[0, 1], [2, 3]])
+
+    result = matrices * matrices
+
+    assert np.array_equal(
+            _unmat(backend, result),
+            [[0, 1], [4, 9]]
+            )
+
+@case
+def truediv[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can take element-wise division with a scalar as numerator
+    """
+    matrices =  _mat(backend, [[1, 2], [3, 4]])
+
+    result = 1. / matrices
+
+    assert np.allclose(
+            _unmat(backend, result),
+            [[1, 1/2], [1/3, 1/4]]
+            )

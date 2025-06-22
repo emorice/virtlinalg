@@ -27,6 +27,18 @@ class Matrices:
         """
         raise NotImplementedError
 
+    def __mul__(self, other: Self) -> Self:
+        """
+        Element-wise multiplication (Hadamard product)
+        """
+        raise NotImplementedError
+
+    def __rtruediv__(self, other: float) -> Self:
+        """
+        Element-wise scalar division
+        """
+        raise NotImplementedError
+
     def __neg__(self) -> Self:
         """
         Matrix unary minus

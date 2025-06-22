@@ -28,10 +28,18 @@ class _NumpyMatrices(Matrices):
             return _NumpyMatrices(other._np_matrices @ self._np_matrices)
         return NotImplemented
 
+    def __mul__(self, other: '_NumpyMatrices') -> '_NumpyMatrices':
+        if isinstance(other, _NumpyMatrices):
+            return _NumpyMatrices(self._np_matrices * other._np_matrices)
+        return NotImplemented
+
     def __add__(self, other: '_NumpyMatrices') -> '_NumpyMatrices':
         if isinstance(other, _NumpyMatrices):
             return _NumpyMatrices(self._np_matrices + other._np_matrices)
         return NotImplemented
+
+    def __rtruediv__(self, other: float) -> '_NumpyMatrices':
+        return _NumpyMatrices(other / self._np_matrices)
 
     def inv(self) -> '_NumpyMatrices':
         return _NumpyMatrices(np.linalg.inv(self._np_matrices))
