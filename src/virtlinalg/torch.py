@@ -124,6 +124,18 @@ def unwrap_vectors(vla_matrices: _TorchMatrices) -> torch.Tensor:
     """
     return torch.squeeze(vla_matrices.unwrap(), dim=-1)
 
+def wrap_scalars(torch_scalars: torch.Tensor) -> _TorchMatrices:
+    """
+    Wrap batches of Torch scalars into VLA matrices
+    """
+    return _TorchMatrices(torch_scalars[..., None, None])
+
+def unwrap_scalars(vla_matrices: _TorchMatrices) -> torch.Tensor:
+    """
+    Unwrap batches of Torch scalars from VLA Matrices
+    """
+    return torch.squeeze(vla_matrices.unwrap(), dim=(-2, -1))
+
 def from_numpy(np_array: npt.NDArray) -> torch.Tensor:
     """
     Import from NumPy

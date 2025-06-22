@@ -20,6 +20,11 @@ class Backend[T, M: Matrices](Protocol):
         Wrap batches of backend vectors into VLA matrices
         """
 
+    def wrap_scalars(self, be_scalars: T) -> M:
+        """
+        Wrap batches of scalars into VLA matrices
+        """
+
     def unwrap(self, vla_matrices: M) -> T:
         """
         Unwrap backend array from matching subtype of VLA Matrices
@@ -28,6 +33,11 @@ class Backend[T, M: Matrices](Protocol):
     def unwrap_vectors(self, vla_matrices: M) -> T:
         """
         Unwrap batches of backend vectors from VLA Matrices
+        """
+
+    def unwrap_scalars(self, vla_matrices: M) -> T:
+        """
+        Unwrap batches of backend scalars from VLA Matrices
         """
 
     def from_numpy(self, np_array: npt.NDArray) -> T:

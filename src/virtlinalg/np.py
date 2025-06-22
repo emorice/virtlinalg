@@ -88,6 +88,18 @@ def unwrap_vectors(vla_matrices: _NumpyMatrices) -> npt.NDArray:
     """
     return np.squeeze(vla_matrices.unwrap(), axis=-1)
 
+def wrap_scalars(np_scalars: npt.NDArray) -> _NumpyMatrices:
+    """
+    Wrap batches of NumPy scalars into VLA matrices
+    """
+    return _NumpyMatrices(np_scalars[..., None, None])
+
+def unwrap_scalars(vla_matrices: _NumpyMatrices) -> npt.NDArray:
+    """
+    Unwrap batches of NumPy scalars from VLA Matrices
+    """
+    return np.squeeze(vla_matrices.unwrap(), axis=(-2, -1))
+
 # Trivial import/export for non-numpy backend interface
 def from_numpy(np_array: npt.NDArray) -> npt.NDArray:
     """

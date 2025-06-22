@@ -195,3 +195,21 @@ def truediv[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
             _unmat(backend, result),
             [[1, 1/2], [1/3, 1/4]]
             )
+
+@case
+def scalar[T, M: vla.Matrices](backend: vla.Backend[T, M]) -> None:
+    """
+    Can wrap a scalar and use it to scale a matrix
+    """
+    matrices =  _mat(backend, [[1, 2], [3, 4]])
+
+    scalars = backend.wrap_scalars(
+                backend.from_numpy(np.array(5))
+                )
+
+    result = scalars * matrices
+
+    assert np.array_equal(
+            _unmat(backend, result),
+            [[5, 10], [15, 20]]
+            )
