@@ -6,6 +6,12 @@
 VirtLinAlg documentation
 ========================
 
+.. important::
+
+   VirtLinAlg is under active development. This documentation may include features
+   that are not actually implemented or tested yet, and the interface may change
+   at any time.
+
 A library for virtual linear algebra
 ------------------------------------
 
@@ -51,7 +57,9 @@ Getting started
 
 VirtLinAlg is under active development and has not yet been released. To try out
 the current development version, install it directly from the Github
-repository::
+repository:
+
+.. code-block:: bash
 
         pip install "virtlinalg @ git+https://github.com/emorice/virtlinalg"
 
