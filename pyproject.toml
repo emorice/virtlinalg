@@ -9,8 +9,7 @@ license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.12" # Limited by type parameter lists
 dependencies = [
-    "numpy>=2.1.2", # Downgraded to the latest version in pytorch index
-    "pylint>=3.3.7",
+    "numpy>=2.1.2",
 ]
 
 [build-system]
@@ -20,8 +19,13 @@ build-backend = "setuptools.build_meta"
 [dependency-groups]
 dev = [
     "mypy>=1.16.0",
+    "pylint>=3.3.7",
     "ruff>=0.11.13",
     "tox>=4.26.0",
+]
+docs = [
+    "pydata-sphinx-theme>=0.16.1",
+    "sphinx>=8.2.3",
 ]
 testing = [
     "pytest>=8.4.0",
