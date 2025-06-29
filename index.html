@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>VirtLinAlg documentation &#8212; VirtLinAlg 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">VirtLinAlg 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="virtlinalg-documentation">
+<h1>VirtLinAlg documentation<a class="headerlink" href="#virtlinalg-documentation" title="Link to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>VirtLinAlg is under active development. This documentation may include features
+that are not actually implemented or tested yet, and the interface may change
+at any time.</p>
+</div>
+<section id="a-library-for-virtual-linear-algebra">
+<h2>A library for virtual linear algebra<a class="headerlink" href="#a-library-for-virtual-linear-algebra" title="Link to this heading">#</a></h2>
+<p>This library enables users to write code that uses matrix operations while
+abstracting several unrelated implementation details of said operations.</p>
+<ol class="arabic simple">
+<li><p>The special mathematical structure of some matrices:</p>
+<ul class="simple">
+<li><p>low-rank matrices and low-rank perturbations of matrices,</p></li>
+<li><p>more trivially, diagonal matrices and scalar multiple of identity matrices.</p></li>
+</ul>
+</li>
+</ol>
+<p>Matrices having such a structure can exploit linear algebra tricks, such as
+the <a class="reference external" href="https://en.wikipedia.org/wiki/Woodbury_matrix_identity">Woodbury matrix identity</a>,
+to perform some operations, mostly inverses and determinants. The library
+implements these tricks for you.</p>
+<p>3. Collection of related matrices, such as several matrices differing by a
+low-rank perturbation, and block matrices where blocks are any of the above.
+Here again the structure of the block matrix or stack of matrics allows
+linear algebra tricks that the library offers. Such collections are often
+obtained by performing “leave-one-out” operation, which the library offers.
+Even with unrelated matrices, it offers a comfortable syntax to vectorize
+matrix functions.</p>
+<p>4. The specific library used to store the matrix and operates on them: NumPy,
+Torch, Tensorflow, JAX. You can write functions once, and then use them
+immediately with any of these frameworks. The library handles the
+translation of operations from one framework to another. This should
+hopefully become increasingly unimportant as standardization efforts
+progress: for instance Tensorflow has a tf.experimental.numpy API, and the
+Array API exists. This is not really the main focus of the library, rather
+it is the solution chosen so that VLA is not locked in to a specific backend
+or API.</p>
+<p>Put together, the library allows you for instance to write a function using
+linear algebra tricks to efficiently handle a stack of matrices differing from
+one another by low-rank updates, and have that function work out of the box with
+NumPy, or with Torch and JAX arrays to get automatic differentiation on it.</p>
+</section>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>VirtLinAlg is under active development and has not yet been released. To try out
+the current development version, install it directly from the Github
+repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;virtlinalg @ git+https://github.com/emorice/virtlinalg&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="module-virtlinalg">
+<span id="api-documentation"></span><h2>API documentation<a class="headerlink" href="#module-virtlinalg" title="Link to this heading">#</a></h2>
+<p>Virtual Linear Algebra</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="virtlinalg.Backend">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">Backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#virtlinalg.Backend" title="Link to this definition">#</a></dt>
+<dd><p>Interface of backend modules</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.from_numpy">
+<span class="sig-name descname"><span class="pre">from_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">np_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">_ScalarT</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#virtlinalg.Backend.from_numpy" title="Link to this definition">#</a></dt>
+<dd><p>Import from NumPy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.to_numpy">
+<span class="sig-name descname"><span class="pre">to_numpy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">be_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">_ScalarT</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#virtlinalg.Backend.to_numpy" title="Link to this definition">#</a></dt>
+<dd><p>Export to NumPy</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.unwrap">
+<span class="sig-name descname"><span class="pre">unwrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vla_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#virtlinalg.Backend.unwrap" title="Link to this definition">#</a></dt>
+<dd><p>Unwrap backend array from matching subtype of VLA Matrices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.unwrap_scalars">
+<span class="sig-name descname"><span class="pre">unwrap_scalars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vla_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#virtlinalg.Backend.unwrap_scalars" title="Link to this definition">#</a></dt>
+<dd><p>Unwrap batches of backend scalars from VLA Matrices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.unwrap_vectors">
+<span class="sig-name descname"><span class="pre">unwrap_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vla_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="headerlink" href="#virtlinalg.Backend.unwrap_vectors" title="Link to this definition">#</a></dt>
+<dd><p>Unwrap batches of backend vectors from VLA Matrices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.wrap">
+<span class="sig-name descname"><span class="pre">wrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">be_matrices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#virtlinalg.Backend.wrap" title="Link to this definition">#</a></dt>
+<dd><p>Wrap backend arrays into a subtype of VLA matrices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.wrap_scalars">
+<span class="sig-name descname"><span class="pre">wrap_scalars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">be_scalars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#virtlinalg.Backend.wrap_scalars" title="Link to this definition">#</a></dt>
+<dd><p>Wrap batches of scalars into VLA matrices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Backend.wrap_vectors">
+<span class="sig-name descname"><span class="pre">wrap_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">be_vectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">M</span></span></span><a class="headerlink" href="#virtlinalg.Backend.wrap_vectors" title="Link to this definition">#</a></dt>
+<dd><p>Wrap batches of backend vectors into VLA matrices</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="virtlinalg.BackendNotFoundError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">BackendNotFoundError</span></span><a class="headerlink" href="#virtlinalg.BackendNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Raised by VLA backend modules when loading a backend dependency fails.</p>
+<p>This allows to programmatically determine if loading a VLA backend failed
+because that backend is not installed or because of a bug.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="virtlinalg.Matrices">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">Matrices</span></span><a class="headerlink" href="#virtlinalg.Matrices" title="Link to this definition">#</a></dt>
+<dd><p>Minimal backend matrix interface</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="virtlinalg.Matrices.T">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">T</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Self</span></em><a class="headerlink" href="#virtlinalg.Matrices.T" title="Link to this definition">#</a></dt>
+<dd><p>Transpose</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Matrices.inv">
+<span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#virtlinalg.Matrices.inv" title="Link to this definition">#</a></dt>
+<dd><p>Attempt inverse</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="virtlinalg.Matrices.n_cols">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_cols</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#virtlinalg.Matrices.n_cols" title="Link to this definition">#</a></dt>
+<dd><p>Number of columns</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="virtlinalg.Matrices.n_rows">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_rows</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#virtlinalg.Matrices.n_rows" title="Link to this definition">#</a></dt>
+<dd><p>Number of rows</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="virtlinalg.Matrices.right_eye">
+<span class="sig-name descname"><span class="pre">right_eye</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#virtlinalg.Matrices.right_eye" title="Link to this definition">#</a></dt>
+<dd><p>Conformable identity matrix on right side</p>
+<p>When applied to a stack of matrices, there is as of now no required
+shape, as long as it broadcasts back correctly for that backend.</p>
+<p>The dtype or equivalent is also undefined for now, as long as it can be
+applied back for that backend.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.diagonal">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">diagonal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diagonals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_Diagonal</span></span></span><a class="headerlink" href="#virtlinalg.diagonal" title="Link to this definition">#</a></dt>
+<dd><p>Create diagonal linear maps out of the given diagonals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>diagonals</strong> – must be a stack of column (n x 1) vectors, each of which will
+represent a diagonal of a map in the resulting stack.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.identity">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Identity</span></span></span><a class="headerlink" href="#virtlinalg.identity" title="Link to this definition">#</a></dt>
+<dd><p>Identity map of a given rank</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.inv">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Maps</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Maps</span></span></span><a class="headerlink" href="#virtlinalg.inv" title="Link to this definition">#</a></dt>
+<dd><p>Attempt to invert maps</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.low_rank_product">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">low_rank_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_LowRankProduct</span></span></span><a class="headerlink" href="#virtlinalg.low_rank_product" title="Link to this definition">#</a></dt>
+<dd><p>Virtual <cite>left &#64; right</cite> product that does not actually perform the contraction</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.low_rank_update">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">low_rank_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Maps</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Maps</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">M</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_LowRankUpdate</span></span></span><a class="headerlink" href="#virtlinalg.low_rank_update" title="Link to this definition">#</a></dt>
+<dd><p>Virtual <cite>base + left &#64; center &#64; right</cite> product that does not explictly
+compute the matrix.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="virtlinalg.scaled">
+<span class="sig-prename descclassname"><span class="pre">virtlinalg.</span></span><span class="sig-name descname"><span class="pre">scaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Maps</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_Scaled</span></span></span><a class="headerlink" href="#virtlinalg.scaled" title="Link to this definition">#</a></dt>
+<dd><p>Scale the base map by the given scalar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scale</strong> – must be a stack of (1 x 1) matrices, each of which will
+represent a scale for a map in the resulting stack.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-library-for-virtual-linear-algebra">A library for virtual linear algebra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-virtlinalg">API documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend"><code class="docutils literal notranslate"><span class="pre">Backend</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.from_numpy"><code class="docutils literal notranslate"><span class="pre">Backend.from_numpy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.to_numpy"><code class="docutils literal notranslate"><span class="pre">Backend.to_numpy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.unwrap"><code class="docutils literal notranslate"><span class="pre">Backend.unwrap()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.unwrap_scalars"><code class="docutils literal notranslate"><span class="pre">Backend.unwrap_scalars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.unwrap_vectors"><code class="docutils literal notranslate"><span class="pre">Backend.unwrap_vectors()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.wrap"><code class="docutils literal notranslate"><span class="pre">Backend.wrap()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.wrap_scalars"><code class="docutils literal notranslate"><span class="pre">Backend.wrap_scalars()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Backend.wrap_vectors"><code class="docutils literal notranslate"><span class="pre">Backend.wrap_vectors()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.BackendNotFoundError"><code class="docutils literal notranslate"><span class="pre">BackendNotFoundError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices"><code class="docutils literal notranslate"><span class="pre">Matrices</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices.T"><code class="docutils literal notranslate"><span class="pre">Matrices.T</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices.inv"><code class="docutils literal notranslate"><span class="pre">Matrices.inv()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices.n_cols"><code class="docutils literal notranslate"><span class="pre">Matrices.n_cols</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices.n_rows"><code class="docutils literal notranslate"><span class="pre">Matrices.n_rows</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.Matrices.right_eye"><code class="docutils literal notranslate"><span class="pre">Matrices.right_eye()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.diagonal"><code class="docutils literal notranslate"><span class="pre">diagonal()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.identity"><code class="docutils literal notranslate"><span class="pre">identity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.inv"><code class="docutils literal notranslate"><span class="pre">inv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.low_rank_product"><code class="docutils literal notranslate"><span class="pre">low_rank_product()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.low_rank_update"><code class="docutils literal notranslate"><span class="pre">low_rank_update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtlinalg.scaled"><code class="docutils literal notranslate"><span class="pre">scaled()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Étienne Morice.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
