@@ -1,0 +1,31 @@
+# Build docs with sphinx and pushes to gh-pages branch
+
+name: Docs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To modify the gh-pages branch
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.13'
+      - name: Install python docs dependencies
+        run: pip install . --group docs
+      - name: Build with Sphinx
+        working-directory: ./docs
+        run: make html
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/_build/html
